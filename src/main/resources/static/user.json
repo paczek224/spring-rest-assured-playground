@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "Maria",
+    "lastName": "Nowak",
+    "email": "mNowak@wp.pl",
+    "gender": "Female",
+    "ipAddress": "0.0.0.1"
+  },
+  {
+    "firstName": "Jan",
+    "lastName": "Kowalski",
+    "email": "jKowalski@wp.pl",
+    "gender": "Male",
+    "ipAddress": "1.1.1.1"
+  }
+]
