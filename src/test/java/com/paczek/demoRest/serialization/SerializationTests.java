@@ -68,6 +68,16 @@ public class SerializationTests extends BaseTest {
         Assertions.assertThat(createdUser2.getEmail()).isEqualTo("jKowalski@wp.pl");
         Assertions.assertThat(createdUser2.getGender()).isEqualTo(Gender.Male.name());
         Assertions.assertThat(createdUser2.getIpAddress()).isEqualTo("1.1.1.1");
+    }
 
+    @Test
+    void cannotCreateUserWithNullProperties(){
+        final UserDto userToCreate = new UserDto();
+        given()
+                .contentType(ContentType.JSON)
+                .body(userToCreate)
+                .post("users")
+                .then()
+                .statusCode(400);
     }
 }

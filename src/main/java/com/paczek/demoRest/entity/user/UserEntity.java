@@ -36,4 +36,13 @@ public class UserEntity {
         this.gender = gender;
         this.ipAddress = ipAddress;
     }
+
+    public UserEntity(long id, String firstName, String lastName, String email, String gender, String ipAddress) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.ipAddress = ipAddress;
+    }
 }
