@@ -71,9 +71,10 @@ public class MockingTests {
         UserDto mockedCreatedUser = Mappers.map(postDto);
         Mockito.when(userService.save(Mockito.any(UserDto.class))).thenReturn(mockedCreatedUser);
 
+        UserDto body = new UserDto(0L, "xx", "xx", "xx", "xx", "xx");
         UserDto result = mapToDto(mockMvc.perform(MockMvcRequestBuilders.post(baseUrl + "users")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(writeValueAsString(postDto).getBytes()))
+                        .content(writeValueAsString(body).getBytes()))
                 .andExpect(status().is(201))
                 .andReturn()
                 .getResponse()

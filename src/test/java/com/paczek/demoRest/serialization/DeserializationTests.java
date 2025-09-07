@@ -49,17 +49,18 @@ public class DeserializationTests extends BaseTest {
         });
 
         List<UserOrdersSummaryDto> expected = allOrders.stream()
-                .collect(Collectors.groupingBy(OrderDto::userId))
+                .collect(Collectors.groupingBy(
+                        OrderDto::userId,
+                        Collectors.summingDouble(OrderDto::price)
+                ))
                 .entrySet()
                 .stream()
                 .map(e -> {
                     final UserDto userInKey = Mappers.find(users, () -> e::getKey);
-                    return new UserOrdersSummaryDto(userInKey.firstName(), userInKey.lastName(),
-                            BigDecimal.valueOf(e.getValue()
-                                            .stream()
-                                            .map(OrderDto::price)
-                                            .reduce(0.0, Double::sum)).setScale(2, RoundingMode.HALF_UP)
-                                    .doubleValue());
+                    return new UserOrdersSummaryDto(
+                            userInKey.firstName(),
+                            userInKey.lastName(),
+                            BigDecimal.valueOf(e.getValue()).setScale(2, RoundingMode.HALF_UP).doubleValue());
                 })
                 .toList();
 

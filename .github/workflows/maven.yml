@@ -55,4 +55,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./target/site/allure-maven-plugin
         publish_branch: gh-pages
-       # destination_dir: allure-report
+        deploy_name: Allure Report

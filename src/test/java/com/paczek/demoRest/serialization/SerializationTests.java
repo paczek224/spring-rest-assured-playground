@@ -3,6 +3,8 @@ package com.paczek.demoRest.serialization;
 import com.paczek.demoRest.BaseTest;
 import com.paczek.demoRest.data.Gender;
 import com.paczek.demoRest.users.UserDto;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.http.ContentType;
 import org.assertj.core.api.Assertions;
@@ -14,6 +16,8 @@ import java.util.List;
 
 import static io.restassured.RestAssured.given;
 
+@Epic("Test epic")
+@Story("Test story")
 public class SerializationTests extends BaseTest {
 
     @Test
