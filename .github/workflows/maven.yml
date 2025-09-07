@@ -39,3 +39,12 @@ jobs:
 
     - name: Build with Maven
       run: mvn test
+
+    - name: Generate Allure Report
+      run: mvn allure:report
+
+    - name: Upload Allure report as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: target/site/allure-maven-plugin
