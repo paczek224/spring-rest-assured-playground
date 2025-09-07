@@ -1,4 +1,4 @@
-package com.paczek.demoRest.controller.mock;
+package com.paczek.demoRest.mock;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

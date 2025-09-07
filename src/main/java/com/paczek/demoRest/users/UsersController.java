@@ -1,9 +1,9 @@
-package com.paczek.demoRest.controller.user;
+package com.paczek.demoRest.users;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.paczek.demoRest.dto.user.UserDto;
-import com.paczek.demoRest.service.user.UserService;
+import com.paczek.demoRest.users.UserDto;
+import com.paczek.demoRest.users.UserService;
 import com.paczek.demoRest.util.Mappers;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;

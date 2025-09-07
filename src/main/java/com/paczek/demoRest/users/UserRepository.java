@@ -1,6 +1,5 @@
-package com.paczek.demoRest.repository.user;
+package com.paczek.demoRest.users;
 
-import com.paczek.demoRest.entity.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

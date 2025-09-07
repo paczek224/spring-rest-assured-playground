@@ -1,5 +1,6 @@
-package com.paczek.demoRest.dto.user;
+package com.paczek.demoRest.users;
 
+import com.paczek.demoRest.util.IdProvider;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,9 +8,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto {
+public class UserDto implements IdProvider {
 
-    long id;
+    Long id;
     String firstName;
     String lastName;
     String email;

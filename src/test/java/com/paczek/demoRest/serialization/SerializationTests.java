@@ -2,7 +2,7 @@ package com.paczek.demoRest.serialization;
 
 import com.paczek.demoRest.BaseTest;
 import com.paczek.demoRest.data.Gender;
-import com.paczek.demoRest.dto.user.UserDto;
+import com.paczek.demoRest.users.UserDto;
 import io.restassured.common.mapper.TypeRef;
 import io.restassured.http.ContentType;
 import org.assertj.core.api.Assertions;

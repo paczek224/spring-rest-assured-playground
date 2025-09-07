@@ -1,8 +1,5 @@
-package com.paczek.demoRest.service.user;
+package com.paczek.demoRest.users;
 
-import com.paczek.demoRest.dto.user.UserDto;
-import com.paczek.demoRest.entity.user.UserEntity;
-import com.paczek.demoRest.repository.user.UserRepository;
 import com.paczek.demoRest.util.Mappers;
 import org.springframework.stereotype.Component;
 

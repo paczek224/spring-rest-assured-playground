@@ -1,11 +1,11 @@
 package com.paczek.demoRest.mocking;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.paczek.demoRest.controller.user.UsersController;
+import com.paczek.demoRest.users.UsersController;
 import com.paczek.demoRest.data.Gender;
-import com.paczek.demoRest.dto.user.UserDto;
-import com.paczek.demoRest.entity.user.UserEntity;
-import com.paczek.demoRest.service.user.UserService;
+import com.paczek.demoRest.users.UserDto;
+import com.paczek.demoRest.users.UserEntity;
+import com.paczek.demoRest.users.UserService;
 import com.paczek.demoRest.util.Mappers;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

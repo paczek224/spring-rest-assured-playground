@@ -1,4 +1,4 @@
-package com.paczek.demoRest.entity.user;
+package com.paczek.demoRest.users;
 
 import jakarta.persistence.*;
 import lombok.Getter;
