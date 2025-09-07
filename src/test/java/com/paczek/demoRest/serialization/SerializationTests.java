@@ -19,7 +19,7 @@ public class SerializationTests extends BaseTest {
     @Test
     void canSerializeObjects() {
 
-        final UserDto userToCreate = new UserDto("Lukasz", "Paczek", "lpaczek@wp.pl", Gender.Male.name(), "0.0.0.0");
+        final UserDto userToCreate = new UserDto(null, "Lukasz", "Paczek", "lpaczek@wp.pl", Gender.Male.name(), "0.0.0.0");
         final UserDto createdUser = given()
                 .contentType(ContentType.JSON)
                 .body(userToCreate)
@@ -36,9 +36,17 @@ public class SerializationTests extends BaseTest {
                 .extract()
                 .as(UserDto.class);
 
-        userToCreate.setId(createdUser.getId());
-        Assertions.assertThat(createdUser).isEqualTo(userToCreate);
-        Assertions.assertThat(fetchedUserById).isEqualTo(userToCreate);
+        Assertions.assertThat(createdUser.firstName()).isEqualTo(userToCreate.firstName());
+        Assertions.assertThat(createdUser.lastName()).isEqualTo(userToCreate.lastName());
+        Assertions.assertThat(createdUser.email()).isEqualTo(userToCreate.email());
+        Assertions.assertThat(createdUser.gender()).isEqualTo(userToCreate.gender());
+        Assertions.assertThat(createdUser.ipAddress()).isEqualTo(userToCreate.ipAddress());
+
+        Assertions.assertThat(fetchedUserById.firstName()).isEqualTo(userToCreate.firstName());
+        Assertions.assertThat(fetchedUserById.lastName()).isEqualTo(userToCreate.lastName());
+        Assertions.assertThat(fetchedUserById.email()).isEqualTo(userToCreate.email());
+        Assertions.assertThat(fetchedUserById.gender()).isEqualTo(userToCreate.gender());
+        Assertions.assertThat(fetchedUserById.ipAddress()).isEqualTo(userToCreate.ipAddress());
     }
 
     @Test
@@ -56,23 +64,23 @@ public class SerializationTests extends BaseTest {
                 });
 
         final UserDto createdUser1 = createdUsers.get(0);
-        Assertions.assertThat(createdUser1.getFirstName()).isEqualTo("Maria");
-        Assertions.assertThat(createdUser1.getLastName()).isEqualTo("Nowak");
-        Assertions.assertThat(createdUser1.getEmail()).isEqualTo("mNowak@wp.pl");
-        Assertions.assertThat(createdUser1.getGender()).isEqualTo(Gender.Female.name());
-        Assertions.assertThat(createdUser1.getIpAddress()).isEqualTo("0.0.0.1");
+        Assertions.assertThat(createdUser1.firstName()).isEqualTo("Maria");
+        Assertions.assertThat(createdUser1.lastName()).isEqualTo("Nowak");
+        Assertions.assertThat(createdUser1.email()).isEqualTo("mNowak@wp.pl");
+        Assertions.assertThat(createdUser1.gender()).isEqualTo(Gender.Female.name());
+        Assertions.assertThat(createdUser1.ipAddress()).isEqualTo("0.0.0.1");
 
         final UserDto createdUser2 = createdUsers.get(1);
-        Assertions.assertThat(createdUser2.getFirstName()).isEqualTo("Jan");
-        Assertions.assertThat(createdUser2.getLastName()).isEqualTo("Kowalski");
-        Assertions.assertThat(createdUser2.getEmail()).isEqualTo("jKowalski@wp.pl");
-        Assertions.assertThat(createdUser2.getGender()).isEqualTo(Gender.Male.name());
-        Assertions.assertThat(createdUser2.getIpAddress()).isEqualTo("1.1.1.1");
+        Assertions.assertThat(createdUser2.firstName()).isEqualTo("Jan");
+        Assertions.assertThat(createdUser2.lastName()).isEqualTo("Kowalski");
+        Assertions.assertThat(createdUser2.email()).isEqualTo("jKowalski@wp.pl");
+        Assertions.assertThat(createdUser2.gender()).isEqualTo(Gender.Male.name());
+        Assertions.assertThat(createdUser2.ipAddress()).isEqualTo("1.1.1.1");
     }
 
     @Test
     void cannotCreateUserWithNullProperties(){
-        final UserDto userToCreate = new UserDto();
+        final UserDto userToCreate = new UserDto(null, null,null,null,null,null);
         given()
                 .contentType(ContentType.JSON)
                 .body(userToCreate)

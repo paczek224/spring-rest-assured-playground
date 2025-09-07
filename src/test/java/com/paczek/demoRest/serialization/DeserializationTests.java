@@ -34,8 +34,8 @@ public class DeserializationTests extends BaseTest {
                 });
 
         Assertions.assertThat(users)
-                .allMatch(u -> u.getEmail().endsWith(emailSuffix), "All has to end with " + emailSuffix)
-                .allMatch(u -> u.getGender().equalsIgnoreCase(gender), "All to be " + gender);
+                .allMatch(u -> u.email().endsWith(emailSuffix), "All has to end with " + emailSuffix)
+                .allMatch(u -> u.gender().equalsIgnoreCase(gender), "All to be " + gender);
     }
 
     @Test
@@ -49,15 +49,15 @@ public class DeserializationTests extends BaseTest {
         });
 
         List<UserOrdersSummaryDto> expected = allOrders.stream()
-                .collect(Collectors.groupingBy(OrderDto::getUserId))
+                .collect(Collectors.groupingBy(OrderDto::userId))
                 .entrySet()
                 .stream()
                 .map(e -> {
                     final UserDto userInKey = Mappers.find(users, () -> e::getKey);
-                    return new UserOrdersSummaryDto(userInKey.getFirstName(), userInKey.getLastName(),
+                    return new UserOrdersSummaryDto(userInKey.firstName(), userInKey.lastName(),
                             BigDecimal.valueOf(e.getValue()
                                             .stream()
-                                            .map(OrderDto::getPrice)
+                                            .map(OrderDto::price)
                                             .reduce(0.0, Double::sum)).setScale(2, RoundingMode.HALF_UP)
                                     .doubleValue());
                 })

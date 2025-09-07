@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 public class Mappers {
 
     public static UserEntity map(UserDto from) {
-        return new UserEntity(from.getFirstName(), from.getLastName(), from.getEmail(), from.getGender(), from.getIpAddress());
+        return new UserEntity(from.firstName(), from.lastName(), from.email(), from.gender(), from.ipAddress());
     }
 
     public static UserDto map(UserEntity from) {
