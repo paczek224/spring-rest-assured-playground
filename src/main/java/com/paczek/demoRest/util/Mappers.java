@@ -1,6 +1,8 @@
 package com.paczek.demoRest.util;
 
 import com.paczek.demoRest.orders.OrderDto;
+import com.paczek.demoRest.products.ProductDto;
+import com.paczek.demoRest.products.ProductEntity;
 import com.paczek.demoRest.users.UserDto;
 import com.paczek.demoRest.orders.OrderEntity;
 import com.paczek.demoRest.users.UserEntity;
@@ -16,6 +18,14 @@ public class Mappers {
 
     public static UserDto map(UserEntity from) {
         return new UserDto(from.getId(), from.getFirstName(), from.getLastName(), from.getEmail(), from.getGender(), from.getIpAddress());
+    }
+
+    public static ProductDto map(ProductEntity from) {
+        return new ProductDto(from.getId(), from.getName(), from.getPrice(), from.getDescription(), from.getCreatedDate());
+    }
+
+    public static ProductEntity map(ProductDto from) {
+        return new ProductEntity(from.id(), from.name(), from.price(), from.description(), from.createdDate());
     }
 
     public static OrderDto map(OrderEntity o) {
