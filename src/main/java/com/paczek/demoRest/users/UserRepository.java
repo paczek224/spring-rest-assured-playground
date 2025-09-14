@@ -11,7 +11,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     @Query("""
                 SELECT u FROM UserEntity u
                 WHERE (:email IS NULL OR u.email LIKE %:email)
-                  AND (:gender IS NULL OR u.gender = :gender)
+                  AND (:gender IS NULL OR LOWER(u.gender) = LOWER(:gender))
             """)
     List<UserEntity> findByEmailLikeAndGender(@Param("email") String email,
                                               @Param("gender") String gender);
