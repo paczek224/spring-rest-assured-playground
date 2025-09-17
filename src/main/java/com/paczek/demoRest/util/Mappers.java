@@ -21,11 +21,11 @@ public class Mappers {
     }
 
     public static ProductDto map(ProductEntity from) {
-        return new ProductDto(from.getId(), from.getName(), from.getPrice(), from.getDescription(), from.getCreatedDate());
+        return new ProductDto(from.getId(), from.getName(), from.getPricePln(), from.getDescription(), from.getCreatedDate());
     }
 
     public static ProductEntity map(ProductDto from) {
-        return new ProductEntity(from.id(), from.name(), from.price(), from.description(), from.createdDate());
+        return new ProductEntity(from.id(), from.name(), from.pricePln(), from.description(), from.createdDate());
     }
 
     public static OrderDto map(OrderEntity o) {

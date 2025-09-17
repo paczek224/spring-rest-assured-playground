@@ -4,9 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.paczek.demoRest.util.Mappers;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +26,20 @@ public class ProductController {
                 .stream()
                 .map(Mappers::map)
                 .toList(), HttpStatusCode.valueOf(200));
+    }
+
+
+    @GetMapping("/products/{id}")
+    public ResponseEntity<ProductDto> getUser(@PathVariable Long id) {
+        return ResponseEntity.ok(Mappers.map(productService.getProduct(id)));
+    }
+
+    @PostMapping("/products")
+    public ResponseEntity<String> addProduct(@RequestBody ProductDto productDto) {
+        try {
+            return new ResponseEntity<>(ob.writeValueAsString(productService.save(productDto)), HttpStatusCode.valueOf(201));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }
