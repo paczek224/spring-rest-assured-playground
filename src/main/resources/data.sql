@@ -1104,7 +1104,7 @@ INSERT INTO orders (user_id, product_name, quantity, price, order_date) VALUES
 (6, 'Headphones', 4, 4201.3, '2024-08-30 22:28:13'),
 (2, 'Mouse', 4, 1558.34, '2024-09-18 20:27:09');
 
-INSERT INTO products (name, price, description, created_at) VALUES
+INSERT INTO products (name, price_pln, description, created_at) VALUES
 ('Mouse', 25.53, 'Bezprzewodowa mysz komputerowa z ergonomicznym kształtem, precyzyjnym sensorem optycznym i długim czasem pracy na baterii. Idealna do codziennego użytku i grania.', '2023-06-23 14:26:25'),
 ('Headphones', 4096.54, 'Wysokiej klasy słuchawki bezprzewodowe z aktywną redukcją szumów, głębokim basem i wygodnymi nausznikami. Świetne do pracy, podróży i słuchania muzyki w najwyższej jakości.', '2024-12-21 07:02:55'),
 ('Printer', 326.28, 'Drukarka atramentowa z funkcją skanowania i kopiowania. Obsługa Wi-Fi i wydajne wkłady atramentowe pozwalają na ekonomiczne użytkowanie w domu i biurze.', '2024-10-26 13:04:21'),
