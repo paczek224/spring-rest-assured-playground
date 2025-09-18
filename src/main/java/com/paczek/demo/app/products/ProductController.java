@@ -16,8 +16,8 @@ import static com.paczek.demo.app.util.Mappers.map;
 @RestController
 public class ProductController {
 
-    private RestTemplate restTemplate;
-    private String currencyUrl;
+    private final RestTemplate restTemplate;
+    private final String currencyUrl;
     private final ProductService productService;
     final ObjectMapper ob = new ObjectMapper();
 

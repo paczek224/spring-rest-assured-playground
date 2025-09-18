@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/exchangerates/rates/a/DKK?format=json"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "currency-dkk.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

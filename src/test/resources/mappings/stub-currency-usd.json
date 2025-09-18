@@ -1,0 +1,13 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/exchangerates/rates/a/USD?format=json"
+  },
+  "response": {
+    "status": 200,
+    "bodyFileName": "currency-usd.json",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
