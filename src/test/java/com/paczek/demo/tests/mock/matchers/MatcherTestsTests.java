@@ -1,8 +1,9 @@
 package com.paczek.demo.tests.mock.matchers;
 
-import com.paczek.demo.tests.BaseTest;
-
 import com.paczek.demo.app.users.Gender;
+import com.paczek.demo.tests.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,6 +13,8 @@ import java.util.stream.Stream;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
 
+@Epic("Practice")
+@Story("Matchers")
 @SpringBootTest
 class MatcherTestsTests extends BaseTest {
 

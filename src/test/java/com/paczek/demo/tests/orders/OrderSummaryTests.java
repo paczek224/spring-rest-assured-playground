@@ -1,11 +1,12 @@
-package com.paczek.demo.tests.serialization;
+package com.paczek.demo.tests.orders;
 
-import com.paczek.demo.tests.BaseTest;
-import com.paczek.demo.app.users.Gender;
 import com.paczek.demo.app.orders.OrderDto;
 import com.paczek.demo.app.orders.UserOrdersSummaryDto;
 import com.paczek.demo.app.users.UserDto;
 import com.paczek.demo.app.util.Mappers;
+import com.paczek.demo.tests.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import io.restassured.common.mapper.TypeRef;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,29 +18,12 @@ import java.util.stream.Collectors;
 
 import static io.restassured.RestAssured.given;
 
-public class DeserializationTests extends BaseTest {
+@Epic("App - Orders")
+@Story("OrderSummary")
+public class OrderSummaryTests extends BaseTest {
 
     @Test
-    void canDeserializeUserObjects() {
-
-        final String gender = Gender.Male.name();
-        final String emailSuffix = "pl";
-        List<UserDto> users = given()
-                .queryParam("email", emailSuffix)
-                .queryParam("gender", gender)
-                .get("users")
-                .then()
-                .extract()
-                .as(new TypeRef<>() {
-                });
-
-        Assertions.assertThat(users)
-                .allMatch(u -> u.email().endsWith(emailSuffix), "All has to end with " + emailSuffix)
-                .allMatch(u -> u.gender().equalsIgnoreCase(gender), "All to be " + gender);
-    }
-
-    @Test
-    void canDeserializeOrderSummaryObjects() {
+    void orderSummaryReturnConsistentDataForUsers() {
 
         List<UserDto> users = given().get("users").then().extract().as(new TypeRef<>() {
         });

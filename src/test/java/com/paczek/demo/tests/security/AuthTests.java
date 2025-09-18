@@ -1,11 +1,15 @@
 package com.paczek.demo.tests.security;
 
 import com.paczek.demo.tests.BaseTest;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
 
+@Epic("Practice")
+@Story("security")
 public class AuthTests extends BaseTest {
 
     @Test

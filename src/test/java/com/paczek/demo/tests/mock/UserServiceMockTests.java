@@ -1,12 +1,10 @@
 package com.paczek.demo.tests.mock;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.paczek.demo.app.users.UsersController;
-import com.paczek.demo.app.users.Gender;
-import com.paczek.demo.app.users.UserDto;
-import com.paczek.demo.app.users.UserEntity;
-import com.paczek.demo.app.users.UserService;
+import com.paczek.demo.app.users.*;
 import com.paczek.demo.app.util.Mappers;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -26,6 +24,8 @@ import static com.paczek.demo.tests.mapper.DataMapper.mapToDto;
 import static com.paczek.demo.tests.mapper.DataMapper.writeValueAsString;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+@Epic("Practice")
+@Story("Mock")
 @WebMvcTest(controllers = UsersController.class, excludeAutoConfiguration = SecurityAutoConfiguration.class)
 @Import(UserServiceMockTests.MockConfig.class)
 @AutoConfigureMockMvc

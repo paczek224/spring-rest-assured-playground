@@ -7,6 +7,8 @@ import com.paczek.demo.app.users.UserDto;
 import com.paczek.demo.app.orders.OrderEntity;
 import com.paczek.demo.app.users.UserEntity;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -21,11 +23,21 @@ public class Mappers {
     }
 
     public static ProductDto map(ProductEntity from) {
-        return new ProductDto(from.getId(), from.getName(), from.getPricePln(), from.getDescription(), from.getCreatedDate());
+        return new ProductDto(from.getId(), from.getName(), from.getPricePln(), from.getDescription(), from.getCreatedDate(), "PLN");
+    }
+
+    public static ProductDto map(ProductEntity from, String currency, double toPlnRate) {
+        var price = calculatePlnToCurrency(from.getPricePln(), toPlnRate);
+
+        return new ProductDto(from.getId(), from.getName(), price.doubleValue(), from.getDescription(), from.getCreatedDate(), currency);
+    }
+
+    public static BigDecimal calculatePlnToCurrency(double fromPln, double toPlnRate) {
+        return BigDecimal.valueOf(fromPln / toPlnRate).setScale(2, RoundingMode.HALF_EVEN);
     }
 
     public static ProductEntity map(ProductDto from) {
-        return new ProductEntity(from.id(), from.name(), from.pricePln(), from.description(), from.createdDate());
+        return new ProductEntity(from.id(), from.name(), from.price(), from.description(), from.createdDate());
     }
 
     public static OrderDto map(OrderEntity o) {
