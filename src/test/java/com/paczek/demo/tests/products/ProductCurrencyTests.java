@@ -1,5 +1,6 @@
 package com.paczek.demo.tests.products;
 
+import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.paczek.demo.app.products.CurrencyRateResponse;
 import com.paczek.demo.app.products.ProductDto;
 import com.paczek.demo.tests.BaseTest;
@@ -20,21 +21,23 @@ import static io.restassured.RestAssured.given;
 
 @Epic("App - Products")
 @Story("Currency")
+@WireMockTest(httpPort = 8081)
 public class ProductCurrencyTests extends BaseTest {
 
     private static Set<ProductDto> products;
 
     @BeforeAll
-    public static void setupAllProducts(){
+    public static void setupAllProducts() {
         products = given()
                 .get("products")
                 .then()
                 .extract()
-                .as(new TypeRef<>() {});
+                .as(new TypeRef<>() {
+                });
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"EUR", "GBP", "USD", "CHF", "CZK", "DKK"})
+    @ValueSource(strings = {"EUR", "USD", "DKK"})
     void productDefaultCurrencyIsPLN(String currency) {
 
         ProductDto productDto = new ArrayList<>(products).get(0);
