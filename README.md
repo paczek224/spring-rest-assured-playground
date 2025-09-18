@@ -1,4 +1,5 @@
 # spring-rest-assured-playground
+[![Build](https://github.com/paczek224/spring-rest-assured-playground/actions/workflows/maven.yml/badge.svg)](https://github.com/paczek224/spring-rest-assured-playground/actions/workflows/maven.yml)
 
 A showcase project designed to demonstrate the technical skills of a
 **Test Automation Engineer**.
