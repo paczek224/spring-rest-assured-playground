@@ -30,7 +30,7 @@ public class ProductController {
 
 
     @GetMapping("/products/{id}")
-    public ResponseEntity<ProductDto> getUser(@PathVariable Long id) {
+    public ResponseEntity<ProductDto> getProduct(@PathVariable Long id) {
         return ResponseEntity.ok(Mappers.map(productService.getProduct(id)));
     }
 
