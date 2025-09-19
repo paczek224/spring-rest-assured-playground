@@ -15,9 +15,10 @@ testing approaches.
 
 ## Features
 
--   **Spring Boot application** with REST endpoints.\
--   **Dedicated test profile** using **WireMock**.\
--   **Dockerfile** for easy containerization.\
+-   **Spring Boot application** with REST endpoints.
+-   **Dedicated test profile** using **WireMock**.
+-   **Dockerfile** for easy containerization.
+-   **TestContainers**
 -   **Maven GitHub Workflow** that builds the app, runs tests, and
     generates an **Allure report**.
 
@@ -25,21 +26,22 @@ testing approaches.
 
 All tests are located under the `test` package and demonstrate:
 
--   ✅ **JUnit 5 integration**\
--   ✅ **Parameterized tests**\
+-   ✅ **JUnit 5 integration**
+-   ✅ **Parameterized tests**
 -   ✅ **REST Assured** usage, including:
-    -   Query parameters\
-    -   Path parameters\
-    -   Authentication\
--   ✅ **Serialization & Deserialization**\
+    -   Query parameters
+    -   Path parameters
+    -   Authentication
+-   ✅ **Serialization & Deserialization**
 -   ✅ **Service mocking with WireMock**
+-   ✅ **TestContainers**
 
 ## CI/CD
 
 The project includes a **GitHub Actions workflow** with Maven:
 
-1.  Build the application\
-2.  Run the test suite\
+1.  Build the application
+2.  Run the test suite
 3.  Generate **Allure reports** for test results
 
 ## Docker
@@ -79,19 +81,20 @@ docker run -p 8080:8080 spring-rest-assured-playground
 
 ### Technologies Used
 
--   Java + Spring Boot\
--   JUnit 5\
--   REST Assured\
--   WireMock\
--   Maven\
--   GitHub Actions\
--   Allure Report\
+-   Java + Spring Boot
+-   JUnit 5
+-   REST Assured
+-   WireMock
+-   Maven
+-   GitHub Actions
+-   Allure Report
 -   Docker
+-   Test containers
 
 ------------------------------------------------------------------------
 
 ### Purpose
 
-This project is not intended for production use.\
+This project is not intended for production use.
 Its goal is to **demonstrate testing practices and tools** in the
 context of modern Test Automation Engineering.

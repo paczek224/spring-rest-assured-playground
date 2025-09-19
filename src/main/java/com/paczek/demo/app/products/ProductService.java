@@ -4,6 +4,7 @@ import com.paczek.demo.app.util.Mappers;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class ProductService {
@@ -28,7 +29,8 @@ public class ProductService {
     public ProductDto save(ProductDto productDto){
         return save(Mappers.map(productDto));
     }
-    public ProductEntity getProduct(Long id){
-        return repo.getReferenceById(id);
+
+    public Optional<ProductEntity> getProduct(Long id){
+        return repo.findById(id);
     }
 }

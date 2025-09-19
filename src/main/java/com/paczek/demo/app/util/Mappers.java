@@ -1,10 +1,10 @@
 package com.paczek.demo.app.util;
 
 import com.paczek.demo.app.orders.OrderDto;
+import com.paczek.demo.app.orders.OrderEntity;
 import com.paczek.demo.app.products.ProductDto;
 import com.paczek.demo.app.products.ProductEntity;
 import com.paczek.demo.app.users.UserDto;
-import com.paczek.demo.app.orders.OrderEntity;
 import com.paczek.demo.app.users.UserEntity;
 
 import java.math.BigDecimal;

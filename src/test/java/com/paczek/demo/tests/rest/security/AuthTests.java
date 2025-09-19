@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.security;
+package com.paczek.demo.tests.rest.security;
 
 import com.paczek.demo.tests.BaseTest;
 import io.qameta.allure.Epic;
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 
 @Epic("Practice")
-@Story("security")
+@Story("Security")
 public class AuthTests extends BaseTest {
 
     @Test
