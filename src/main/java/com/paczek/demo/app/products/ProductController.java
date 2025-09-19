@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 
 import static com.paczek.demo.app.util.Mappers.map;
@@ -42,11 +43,12 @@ public class ProductController {
     public ResponseEntity<ProductDto> getProduct(@PathVariable Long id,
                                                  @RequestParam(value = "currency", required = false) String currency) {
 
+        final ProductEntity from = productService.getProduct(id).orElseThrow(NoSuchElementException::new);
         if (Objects.isNull(currency)) {
-            return ResponseEntity.ok(map(productService.getProduct(id)));
+            return ResponseEntity.ok(map(from));
         } else {
             CurrencyRateResponse currencies = getCurrencies(currency);
-            return ResponseEntity.ok(map(productService.getProduct(id), currency, currencies.rates().get(0).mid()));
+            return ResponseEntity.ok(map(from, currency, currencies.rates().get(0).mid()));
         }
     }
 

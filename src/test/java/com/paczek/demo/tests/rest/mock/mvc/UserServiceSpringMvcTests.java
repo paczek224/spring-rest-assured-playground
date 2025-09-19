@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.mock;
+package com.paczek.demo.tests.rest.mock.mvc;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.paczek.demo.app.users.*;
@@ -16,20 +16,20 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static com.paczek.demo.tests.mapper.DataMapper.mapToDto;
-import static com.paczek.demo.tests.mapper.DataMapper.writeValueAsString;
+import static com.paczek.demo.tests.utils.DataMapper.mapToDto;
+import static com.paczek.demo.tests.utils.DataMapper.writeValueAsString;
+import static org.springframework.http.MediaType.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @Epic("Practice")
 @Story("Mock")
 @WebMvcTest(controllers = UsersController.class, excludeAutoConfiguration = SecurityAutoConfiguration.class)
-@Import(UserServiceMockTests.MockConfig.class)
+@Import(UserServiceSpringMvcTests.MockConfig.class)
 @AutoConfigureMockMvc
-public class UserServiceMockTests {
+public class UserServiceSpringMvcTests {
 
     @Autowired
     private MockMvc mockMvc;
@@ -49,12 +49,12 @@ public class UserServiceMockTests {
     protected String baseUrl;
 
     @Test
-    void canMockUserServiceToFindUser() throws Exception {
+    void isAbleToMockUserServiceMethodForGettingUserEntity() throws Exception {
         long mockedId = 100L;
         UserEntity mockedRepositoryUser = new UserEntity(mockedId, "Lukasz", "Paczek", "test@zzz.com", Gender.Male.name(), "1.1.1.1");
         Mockito.when(userService.getUser(mockedId)).thenReturn(mockedRepositoryUser);
 
-        UserDto result = mapToDto(mockMvc.perform(MockMvcRequestBuilders.get(baseUrl + "users/" + mockedId))
+        UserDto result = mapToDto(mockMvc.perform(get(baseUrl + "users/" + mockedId))
                 .andExpect(status().isOk())
                 .andReturn()
                 .getResponse()
@@ -65,15 +65,14 @@ public class UserServiceMockTests {
     }
 
     @Test
-    void canMockUserServiceSaveToCheckIfCreatedUserIsCorrectlyReturned() throws Exception {
+    void isAbleToMockUserServiceSaveMethodForSavingNewUser() throws Exception {
         long mockedId = 100L;
-        UserEntity postDto = new UserEntity(mockedId, "Lukasz", "Paczek", "test@zzz.com", Gender.Male.name(), "1.1.1.1");
-        UserDto mockedCreatedUser = Mappers.map(postDto);
+        UserDto mockedCreatedUser = new UserDto(mockedId, "Lukasz", "Paczek", "test@zzz.com", Gender.Male.name(), "1.1.1.1");
         Mockito.when(userService.save(Mockito.any(UserDto.class))).thenReturn(mockedCreatedUser);
 
         UserDto body = new UserDto(0L, "xx", "xx", "xx", "xx", "xx");
-        UserDto result = mapToDto(mockMvc.perform(MockMvcRequestBuilders.post(baseUrl + "users")
-                        .contentType(MediaType.APPLICATION_JSON)
+        UserDto result = mapToDto(mockMvc.perform(post(baseUrl + "users")
+                        .contentType(APPLICATION_JSON)
                         .content(writeValueAsString(body).getBytes()))
                 .andExpect(status().is(201))
                 .andReturn()

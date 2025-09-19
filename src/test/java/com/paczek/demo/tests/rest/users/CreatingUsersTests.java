@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.users;
+package com.paczek.demo.tests.rest.users;
 
 import com.paczek.demo.app.users.Gender;
 import com.paczek.demo.app.users.UserDto;

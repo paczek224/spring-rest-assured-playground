@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.products;
+package com.paczek.demo.tests.rest.mock.wiremock.products;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.paczek.demo.app.products.CurrencyRateResponse;
@@ -19,10 +19,12 @@ import java.util.Set;
 import static com.paczek.demo.app.util.Mappers.calculatePlnToCurrency;
 import static io.restassured.RestAssured.given;
 
+@Epic("Practice")
 @Epic("App - Products")
+@Story("WireMock")
 @Story("Currency")
 @WireMockTest(httpPort = 8081)
-public class ProductCurrencyTests extends BaseTest {
+public class ProductsCurrencyTests extends BaseTest {
 
     private static Set<ProductDto> products;
 
@@ -38,8 +40,7 @@ public class ProductCurrencyTests extends BaseTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"EUR", "USD", "DKK"})
-    void productDefaultCurrencyIsPLN(String currency) {
-
+    void productsCurrenciesAreCorrectlyCalculated(String currency) {
         ProductDto productDto = new ArrayList<>(products).get(0);
         ProductDto productByIdInCurrency = given()
                 .pathParams("id", productDto.id())

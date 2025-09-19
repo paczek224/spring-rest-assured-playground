@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.mock.matchers;
+package com.paczek.demo.tests.rest.mock.matchers;
 
 import com.paczek.demo.app.users.Gender;
 import com.paczek.demo.tests.BaseTest;

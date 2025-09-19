@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.users;
+package com.paczek.demo.tests.rest.users;
 
 import com.paczek.demo.app.users.Gender;
 import com.paczek.demo.app.users.UserDto;
@@ -20,7 +20,7 @@ import static io.restassured.RestAssured.given;
 public class ImportUsersTests extends BaseTest {
 
     @Test
-    void canImportUserFromFile() throws URISyntaxException {
+    void canImportUsersFromFile() throws URISyntaxException {
 
         final Path of = Path.of(ClassLoader.getSystemResource("static/user.json").toURI());
 
