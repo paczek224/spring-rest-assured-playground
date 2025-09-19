@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.rest.contract.consumers;
+package com.paczek.demo.tests.contract.consumers;
 
 import au.com.dius.pact.consumer.MockServer;
 import au.com.dius.pact.consumer.dsl.PactDslWithProvider;
@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Scanner;
@@ -40,12 +41,12 @@ public class UserConsumerPactTest extends BaseTest {
     private UserDto test;
 
     @Autowired
-    private UserService userService;
+    private UserRepository userRepository;
 
     @BeforeEach
     public void setup(){
         if(Objects.isNull(test)){
-            test = Mappers.map(userService.getUser(1L));
+            test = Mappers.map(userRepository.findById(1L).orElseThrow(IllegalStateException::new));
         }
     }
 
@@ -65,8 +66,8 @@ public class UserConsumerPactTest extends BaseTest {
 
     @SneakyThrows
     @Test
-    void testUserApi(MockServer mockServer) throws IOException {
-        URL url = new URL(mockServer.getUrl() + "/users/" + test.id());
+    void testUserApi(MockServer mockServer) {
+        URL url = new URI(mockServer.getUrl() + "/users/" + test.id()).toURL();
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod("GET");
 

@@ -37,8 +37,14 @@ jobs:
     - name: Wait for app to start
       run: sleep 20
 
-    - name: Build with Maven
-      run: mvn test
+    - name: Build contract Consumer Tests
+      run: mvn test -Dtest=UserConsumerPactTest
+
+    - name: Build contract Provider Tests
+      run: mvn test -Dtest=UserProviderPactTest
+
+    - name: Build with Maven Regression Tests
+      run: mvn test -Dtest=RegressionTests
 
     - name: Generate Allure Report
       run: mvn allure:report

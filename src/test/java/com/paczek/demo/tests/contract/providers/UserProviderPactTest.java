@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.rest.contract.providers;
+package com.paczek.demo.tests.contract.providers;
 
 import au.com.dius.pact.provider.junit5.HttpTestTarget;
 import au.com.dius.pact.provider.junit5.PactVerificationContext;
