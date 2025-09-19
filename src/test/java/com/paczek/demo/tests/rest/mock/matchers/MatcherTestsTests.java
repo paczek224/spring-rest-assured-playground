@@ -16,7 +16,7 @@ import static org.hamcrest.Matchers.*;
 @Epic("Practice")
 @Story("Matchers")
 @SpringBootTest
-class MatcherTestsTests extends BaseTest {
+public class MatcherTestsTests extends BaseTest {
 
     @Test
     void everyItemIsOneOfExpectedValues() {
