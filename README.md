@@ -9,7 +9,7 @@ A showcase project designed to demonstrate the technical skills of a
 
 This project is built with **Spring Boot** and exposes a simple web
 server with multiple endpoints backed by services and database
-repositories.\
+repositories.
 It is intended as a playground for practicing and presenting various
 testing approaches.
 
@@ -38,7 +38,7 @@ All tests are located under the `test` package and demonstrate:
 -   ✅ **TestContainers**
 -   ✅ **Grafana**
 -   ✅ **Prometheus**
-- 
+
 ## CI/CD
 
 The project includes a **GitHub Actions workflow** with Maven:
