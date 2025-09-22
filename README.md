@@ -28,6 +28,7 @@ All tests are located under the `test` package and demonstrate:
 
 -   ✅ **JUnit 5 integration**
 -   ✅ **Parameterized tests**
+-   ✅ **Contract tests**
 -   ✅ **REST Assured** usage, including:
     -   Query parameters
     -   Path parameters
@@ -35,7 +36,9 @@ All tests are located under the `test` package and demonstrate:
 -   ✅ **Serialization & Deserialization**
 -   ✅ **Service mocking with WireMock**
 -   ✅ **TestContainers**
-
+-   ✅ **Grafana**
+-   ✅ **Prometheus**
+- 
 ## CI/CD
 
 The project includes a **GitHub Actions workflow** with Maven:
@@ -77,12 +80,19 @@ docker build -t spring-rest-assured-playground .
 docker run -p 8080:8080 spring-rest-assured-playground
 ```
 
+**Run with Docker Compose (with Grafana and Prometheus):**
+
+``` bash
+ docker-compose up --build
+```
+
 ------------------------------------------------------------------------
 
 ### Technologies Used
 
 -   Java + Spring Boot
 -   JUnit 5
+-   Pact
 -   REST Assured
 -   WireMock
 -   Maven
@@ -90,6 +100,8 @@ docker run -p 8080:8080 spring-rest-assured-playground
 -   Allure Report
 -   Docker
 -   Test containers
+-   Grafana
+-   Prometheus
 
 ------------------------------------------------------------------------
 

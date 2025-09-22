@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.rest.mock.mvc;
+package com.paczek.demo.tests.functional.rest.mock.mvc;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.paczek.demo.app.users.*;

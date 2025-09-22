@@ -13,6 +13,20 @@ public class LottoController {
 
     @GetMapping("/lotto")
     public String lotto() throws IOException, URISyntaxException {
-        return Files.readString(Path.of(ClassLoader.getSystemResource("static/lotto.json").toURI()));
+        return """
+                {
+                  "lotto":{
+                    "lottoId":5,
+                    "winning-numbers":[2,45,34,23,7,5,3],
+                    "winners":[{
+                      "winnerId":23,
+                      "numbers":[2,45,34,23,3,5]
+                    },{
+                      "winnerId":54,
+                      "numbers":[52,3,12,11,18,22]
+                    }]
+                  }
+                }
+                """;
     }
 }
