@@ -1,4 +1,4 @@
-package com.paczek.demo.mock;
+package com.paczek.demo.app.security;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

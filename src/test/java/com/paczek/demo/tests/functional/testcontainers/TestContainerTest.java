@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.testcontainers;
+package com.paczek.demo.tests.functional.testcontainers;
 
 import com.paczek.demo.app.products.ProductController;
 import com.paczek.demo.tests.BaseTest;

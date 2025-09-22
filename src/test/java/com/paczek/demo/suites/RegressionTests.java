@@ -5,6 +5,6 @@ import org.junit.platform.suite.api.Suite;
 
 
 @Suite
-@SelectPackages( {"com.paczek.demo.tests.rest", "com.paczek.demo.tests.testcontainers"})
+@SelectPackages( {"com.paczek.demo.tests.functional"})
 public class RegressionTests {
 }

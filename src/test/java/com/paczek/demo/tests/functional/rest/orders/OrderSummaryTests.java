@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.rest.orders;
+package com.paczek.demo.tests.functional.rest.orders;
 
 import com.paczek.demo.app.orders.OrderDto;
 import com.paczek.demo.app.orders.UserOrdersSummaryDto;

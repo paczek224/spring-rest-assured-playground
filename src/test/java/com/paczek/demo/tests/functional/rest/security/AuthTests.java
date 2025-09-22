@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.rest.security;
+package com.paczek.demo.tests.functional.rest.security;
 
 import com.paczek.demo.tests.BaseTest;
 import io.qameta.allure.Epic;

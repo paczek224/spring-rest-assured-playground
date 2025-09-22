@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.rest.users;
+package com.paczek.demo.tests.functional.rest.users;
 
 import com.paczek.demo.app.users.Gender;
 import com.paczek.demo.app.users.UserDto;
@@ -22,7 +22,7 @@ public class ImportUsersTests extends BaseTest {
     @Test
     void canImportUsersFromFile() throws URISyntaxException {
 
-        final Path of = Path.of(ClassLoader.getSystemResource("static/user.json").toURI());
+        final Path of = Path.of(ClassLoader.getSystemResource("test/user.json").toURI());
 
         List<UserDto> createdUsers = given()
                 .multiPart(of.toFile())

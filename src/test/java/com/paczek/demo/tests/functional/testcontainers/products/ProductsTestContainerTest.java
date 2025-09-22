@@ -1,7 +1,7 @@
-package com.paczek.demo.tests.testcontainers.products;
+package com.paczek.demo.tests.functional.testcontainers.products;
 
 import com.paczek.demo.app.products.ProductDto;
-import com.paczek.demo.tests.testcontainers.TestContainerTest;
+import com.paczek.demo.tests.functional.testcontainers.TestContainerTest;
 import com.paczek.demo.tests.utils.DataMapper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Story;

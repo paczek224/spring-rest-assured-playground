@@ -1,4 +1,4 @@
-package com.paczek.demo.tests.rest.mock.wiremock.products;
+package com.paczek.demo.tests.functional.rest.mock.wiremock.products;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.paczek.demo.app.products.CurrencyRateResponse;
