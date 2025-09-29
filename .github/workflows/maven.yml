@@ -29,7 +29,7 @@ jobs:
         cache: maven
 
     - name: Build with Maven (without tests)
-      run: mvn -B package -DskipTests
+      run: mvn -B clean package -DskipTests
 
     - name: Run Spring Boot in background
       run: nohup mvn spring-boot:run &
