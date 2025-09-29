@@ -19,7 +19,7 @@ public class CreatingUsersTests extends BaseTest {
     @Test
     void canCreateUser() {
 
-        final UserDto userToCreate = new UserDto(null, "Lukasz", "Paczek", "lpaczek@wp.pl", Gender.Male.name(), "0.0.0.0");
+        final UserDto userToCreate = new UserDto(null, "Lukasz", "Paczek", "lpaczek@wp.pl", Gender.MALE.getLabel(), "0.0.0.0");
         final UserDto createdUser = given()
                 .contentType(ContentType.JSON)
                 .body(userToCreate)

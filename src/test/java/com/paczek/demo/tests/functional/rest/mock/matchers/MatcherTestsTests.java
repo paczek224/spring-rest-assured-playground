@@ -23,7 +23,7 @@ public class MatcherTestsTests extends BaseTest {
         given()
                 .get("users")
                 .then()
-                .body("gender", everyItem(oneOf(Stream.of(Gender.values()).map(Enum::name).toArray(String[]::new))));
+                .body("gender", everyItem(oneOf(Stream.of(Gender.values()).map(Gender::getLabel).toArray(String[]::new))));
     }
 
     @Test

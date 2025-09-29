@@ -32,7 +32,7 @@ public class UsersValidationTests extends BaseTest {
     @Test
     void canFilterUsers() {
 
-        final String gender = Gender.Male.name();
+        final String gender = Gender.MALE.getLabel();
         final String emailSuffix = "pl";
         List<UserDto> users = given()
                 .queryParam("email", emailSuffix)
@@ -44,6 +44,7 @@ public class UsersValidationTests extends BaseTest {
                 });
 
         Assertions.assertThat(users)
+                .isNotEmpty()
                 .allMatch(u -> u.email().endsWith(emailSuffix), "All has to end with " + emailSuffix)
                 .allMatch(u -> u.gender().equalsIgnoreCase(gender), "All to be " + gender);
     }
