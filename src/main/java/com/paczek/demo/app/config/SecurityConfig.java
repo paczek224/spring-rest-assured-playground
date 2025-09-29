@@ -1,5 +1,7 @@
 package com.paczek.demo.app.config;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -18,11 +20,22 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
+@Slf4j
 public class SecurityConfig {
+
+    @Value("${username}")
+    private String userName;
+    @Value("${password}")
+    private String password;
+    @Value("${admin.username}")
+    private String adminUserName;
+    @Value("${admin.password}")
+    private String adminPassword;
 
     @Bean
     @Order(1)
     public SecurityFilterChain basic(HttpSecurity http) throws Exception {
+
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable).disable()) // <- WAŻNE: pozwala H2 otworzyć konsolę w <frame>
@@ -49,15 +62,17 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
+        log.info("username {} pass {} ad {} ad.pass {}",
+                userName, password, adminUserName, adminPassword);
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
 
-        manager.createUser(User.withUsername("user")
-                .password(passwordEncoder().encode("password"))
+        manager.createUser(User.withUsername(userName)
+                .password(passwordEncoder().encode(password))
                 .roles("USER")
                 .build());
 
-        manager.createUser(User.withUsername("admin")
-                .password(passwordEncoder().encode("admin"))
+        manager.createUser(User.withUsername(adminUserName)
+                .password(passwordEncoder().encode(adminPassword))
                 .roles("ADMIN")
                 .build());
 
