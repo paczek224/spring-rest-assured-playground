@@ -37,14 +37,14 @@ public class ImportUsersTests extends BaseTest {
         Assertions.assertThat(createdUser1.firstName()).isEqualTo("Maria");
         Assertions.assertThat(createdUser1.lastName()).isEqualTo("Nowak");
         Assertions.assertThat(createdUser1.email()).isEqualTo("mNowak@wp.pl");
-        Assertions.assertThat(createdUser1.gender()).isEqualTo(Gender.Female.name());
+        Assertions.assertThat(createdUser1.gender()).isEqualTo(Gender.FEMALE.getLabel());
         Assertions.assertThat(createdUser1.ipAddress()).isEqualTo("0.0.0.1");
 
         final UserDto createdUser2 = createdUsers.get(1);
         Assertions.assertThat(createdUser2.firstName()).isEqualTo("Jan");
         Assertions.assertThat(createdUser2.lastName()).isEqualTo("Kowalski");
         Assertions.assertThat(createdUser2.email()).isEqualTo("jKowalski@wp.pl");
-        Assertions.assertThat(createdUser2.gender()).isEqualTo(Gender.Male.name());
+        Assertions.assertThat(createdUser2.gender()).isEqualTo(Gender.MALE.getLabel());
         Assertions.assertThat(createdUser2.ipAddress()).isEqualTo("1.1.1.1");
     }
 }

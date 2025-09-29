@@ -51,7 +51,7 @@ public class UserServiceSpringMvcTests {
     @Test
     void isAbleToMockUserServiceMethodForGettingUserEntity() throws Exception {
         long mockedId = 100L;
-        UserEntity mockedRepositoryUser = new UserEntity(mockedId, "Lukasz", "Paczek", "test@zzz.com", Gender.Male.name(), "1.1.1.1");
+        UserEntity mockedRepositoryUser = new UserEntity(mockedId, "Lukasz", "Paczek", "test@zzz.com", Gender.MALE.getLabel(), "1.1.1.1");
         Mockito.when(userService.getUser(mockedId)).thenReturn(mockedRepositoryUser);
 
         UserDto result = mapToDto(mockMvc.perform(get(baseUrl + "users/" + mockedId))
@@ -67,7 +67,7 @@ public class UserServiceSpringMvcTests {
     @Test
     void isAbleToMockUserServiceSaveMethodForSavingNewUser() throws Exception {
         long mockedId = 100L;
-        UserDto mockedCreatedUser = new UserDto(mockedId, "Lukasz", "Paczek", "test@zzz.com", Gender.Male.name(), "1.1.1.1");
+        UserDto mockedCreatedUser = new UserDto(mockedId, "Lukasz", "Paczek", "test@zzz.com", Gender.MALE.getLabel(), "1.1.1.1");
         Mockito.when(userService.save(Mockito.any(UserDto.class))).thenReturn(mockedCreatedUser);
 
         UserDto body = new UserDto(0L, "xx", "xx", "xx", "xx", "xx");

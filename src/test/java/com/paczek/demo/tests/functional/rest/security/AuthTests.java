@@ -5,12 +5,22 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Story;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
 
 import static io.restassured.RestAssured.given;
 
 @Epic("Practice")
 @Story("Security")
 public class AuthTests extends BaseTest {
+
+    @Value("${username}")
+    private String userName;
+    @Value("${password}")
+    private String password;
+    @Value("${admin.username}")
+    private String adminUserName;
+    @Value("${admin.password}")
+    private String adminPassword;
 
     @Test
     void basicAuthFailed() {
@@ -31,14 +41,14 @@ public class AuthTests extends BaseTest {
     void basicAuthOk() {
         given()
                 .auth()
-                .basic("user", "password")
+                .basic(userName, password)
                 .get("secured/basic")
                 .then()
                 .statusCode(200);
 
         given()
                 .auth()
-                .basic("admin", "admin")
+                .basic(adminUserName, adminPassword)
                 .get("secured/basic")
                 .then()
                 .statusCode(200);
@@ -59,8 +69,8 @@ public class AuthTests extends BaseTest {
     void formOk() {
         given()
                 .contentType("application/x-www-form-urlencoded")
-                .formParam("username", "admin")
-                .formParam("password", "admin")
+                .formParam("username", adminUserName)
+                .formParam("password", adminPassword)
                 .post("/login")
                 .then()
                 .header("Location", Matchers.equalTo(baseUrl));

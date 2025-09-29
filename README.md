@@ -55,14 +55,15 @@ container.
 ------------------------------------------------------------------------
 
 ### How to Run
-
 **Run locally:**
 
+(update env variables with your secrets(username=user;password=foo;admin.username=admin;admin.password=foo)
 ``` bash
 mvn spring-boot:run
 ```
 
 **Run tests with Maven:**
+(update env variables with the same secrets)
 
 ``` bash
 mvn clean test
@@ -82,9 +83,28 @@ docker run -p 8080:8080 spring-rest-assured-playground
 
 **Run with Docker Compose (with Grafana and Prometheus):**
 
+* (add .env file with secrets)
+```
+APP_USERNAME=user
+APP_PASSWORD=password
+
+ADMIN_USERNAME=admin.user
+ADMIN_PASSWORD=admin.password
+```
+
+* docker-compose
 ``` bash
  docker-compose up --build
 ```
+
+* docker-compose (with sonarQube)
+``` bash
+ docker-compose --profile sonar up --build
+```
+
+* Prometheus      http://localhost:9090/ 
+* Grafana         http://localhost:3000/
+* SonarQube       http://localhost:9000/
 
 ------------------------------------------------------------------------
 
@@ -102,6 +122,7 @@ docker run -p 8080:8080 spring-rest-assured-playground
 -   Test containers
 -   Grafana
 -   Prometheus
+-   SonarQube
 
 ------------------------------------------------------------------------
 
