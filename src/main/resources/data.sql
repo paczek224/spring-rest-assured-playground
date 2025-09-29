@@ -1,5 +1,5 @@
 INSERT INTO users (first_name, last_name, email, ip, gender)
-VALUES
+VALUES 
 ( 'Clim', 'Nisco', 'cnisco0@oakley.com', '126.69.27.59', 'Male'),
 ( 'Caril', 'Cuckoo', 'ccuckoo1@fotki.com', '204.144.6.244', 'Female'),
 ( 'Sisile', 'Galletly', 'sgalletly2@about.me', '241.199.51.61', 'Polygender'),
