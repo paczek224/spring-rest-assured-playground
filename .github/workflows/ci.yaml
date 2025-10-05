@@ -1,0 +1,66 @@
+name: Java CI with Maven (Docker Compose)
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      APP_USERNAME: ${{ secrets.APP_USERNAME }}
+      APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
+      ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Start all services
+        run: docker compose up -d --build
+
+      - name: Wait for dependencies to start (Kafka, DB, etc.)
+        run: |
+          echo "Waiting for containers to start..."
+          sleep 30
+          docker ps -a
+
+      # --- [Maven build inside java-app container] ---
+#      - name: Build app (without tests)
+#        run: docker exec java-app mvn -B clean package -DskipTests
+
+      - name: Run contract Consumer Tests
+        run: mvn test -Dspring.profiles.active=test -Dtest=UserConsumerPactTest
+
+      - name: Run contract Provider Tests
+        run: mvn test -Dspring.profiles.active=test -Dtest=UserProviderPactTest
+
+      - name: Run Regression Tests
+        run: mvn test -Dspring.profiles.active=test -Dtest=RegressionTests
+
+      - name: Generate Allure Report
+        if: always()
+        run: mvn allure:report
+
+      - name: Upload Allure report as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: target/site/allure-maven-plugin
+
+      - name: Deploy Allure Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site/allure-maven-plugin
+          publish_branch: gh-pages
+
+      # --- [Clean up] ---
+      - name: Stop and remove Docker Compose services
+        if: always()
+        run: docker compose down -v
