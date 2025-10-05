@@ -1,0 +1,1 @@
+[{"uid":"afaf9f66ca6a529f","name":"UserConsumerPactTest","time":{"start":1759693642138,"stop":1759693642138,"duration":0},"status":"failed","severity":"normal"},{"uid":"f5c4c5d981df5e57","name":"testUserApi(MockServer)","time":{"start":1759693641939,"stop":1759693641954,"duration":15},"status":"broken","severity":"normal"}]
