@@ -1,3 +1,0 @@
-"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
-"","0","UserConsumerPactTest","","Sun Oct 05 19:37:36 UTC 2025","failed","Sun Oct 05 19:37:36 UTC 2025","","com.paczek.demo.tests.contract.consumers.UserConsumerPactTest","com.paczek.demo.tests.contract.consumers.UserConsumerPactTest",""
-"","17","testUserApi(MockServer)","","Sun Oct 05 19:37:36 UTC 2025","broken","Sun Oct 05 19:37:36 UTC 2025","","com.paczek.demo.tests.contract.consumers.UserConsumerPactTest","com.paczek.demo.tests.contract.consumers.UserConsumerPactTest","testUserApi"
