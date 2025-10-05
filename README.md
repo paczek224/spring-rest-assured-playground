@@ -38,6 +38,7 @@ All tests are located under the `test` package and demonstrate:
 -   ✅ **TestContainers**
 -   ✅ **Grafana**
 -   ✅ **Prometheus**
+-   ✅ **Kafka**
 
 ## CI/CD
 
@@ -57,30 +58,6 @@ container.
 ### How to Run
 **Run locally:**
 
-(update env variables with your secrets(username=user;password=foo;admin.username=admin;admin.password=foo)
-``` bash
-mvn spring-boot:run
-```
-
-**Run tests with Maven:**
-(update env variables with the same secrets)
-
-``` bash
-mvn clean test
-```
-
-**Build Docker image:**
-
-``` bash
-docker build -t spring-rest-assured-playground .
-```
-
-**Run with Docker:**
-
-``` bash
-docker run -p 8080:8080 spring-rest-assured-playground
-```
-
 **Run with Docker Compose (with Grafana and Prometheus):**
 
 * (add .env file with secrets)
@@ -92,7 +69,7 @@ ADMIN_USERNAME=admin.user
 ADMIN_PASSWORD=admin.password
 ```
 
-* docker-compose
+* docker-compose (spring app, kafka, grafana prometheus)
 ``` bash
  docker-compose up --build
 ```
@@ -102,9 +79,15 @@ ADMIN_PASSWORD=admin.password
  docker-compose --profile sonar up --build
 ```
 
+* Run tests
+``` bash
+ mvn test -Dspring.profiles.active=test -Dtest=RegressionTests
+```
+
 * Prometheus      http://localhost:9090/ 
 * Grafana         http://localhost:3000/
 * SonarQube       http://localhost:9000/
+* Kafka UI       http://localhost:8888/
 
 ------------------------------------------------------------------------
 
@@ -123,6 +106,7 @@ ADMIN_PASSWORD=admin.password
 -   Grafana
 -   Prometheus
 -   SonarQube
+-   Kafka
 
 ------------------------------------------------------------------------
 
